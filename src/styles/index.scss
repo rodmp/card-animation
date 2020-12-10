@@ -1,5 +1,5 @@
 html {
-  background: url(./../img/background.png) no-repeat center center fixed;
+  background: url(./../images/background.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -10,7 +10,7 @@ html {
   max-width: 49.22vh;
   max-height: 100%;
   margin: 0 auto;
-  padding: 5vh 0px;
+  padding: 5vh 0;
 }
 
 .env-wrapper {
@@ -20,7 +20,7 @@ html {
 }
 
 .env-background {
-  background: url(./../img/envelope-background.png) no-repeat;
+  background: url(./../images/envelope-background.png) no-repeat;
   background-size: 100% 100%;
   content: '';
   display: block;
@@ -29,35 +29,35 @@ html {
 }
 
 .env-card {
-  background: url(./../img/card-background.png) no-repeat;
+  background: url(./../images/card-background.png) no-repeat;
   background-size: auto 100%;
   height: calc(100vh - 10vh);
   width: 100%;
-  top: 0px;
+  top: 0;
   position: absolute;
   z-index: 100;
 }
 
 .env-body {
-  background: url(./../img/envelope.png) no-repeat;
+  background: url(./../images/envelope.png) no-repeat;
   background-size: auto 100%;
   height: calc(100vh - 10vh);
   width: 100%;
-  top: 0px;
+  top: 0;
   left: -1px;
   position: absolute;
   z-index: 100;
 }
+
 .env-cover {
-  background: url(./../img/cover-out.png) center right no-repeat;
+  background: url(./../images/cover-out.png) center right no-repeat;
   background-size: auto 100%;
   height: calc(100vh - 10vh);
   width: 100%;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   position: absolute;
   z-index: 100;
-
   -webkit-transform-origin: right;
   transform-origin: right;
   -webkit-transform-style: preserve-3d;
