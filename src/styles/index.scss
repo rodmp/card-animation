@@ -50,7 +50,7 @@ html {
 
 .env-body {
   background: url(./../images/envelope.png) no-repeat;
-  background-size: auto 100%;
+  background-size: 100% 100%;
   height: 100vh - $paddingY;
   width: 100%;
   top: 0;
@@ -72,4 +72,8 @@ html {
   transform-origin: right;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  &.opened {
+    background: url(./../images/cover-in.png) center right no-repeat;
+    background-size: auto 100%;
+  }
 }

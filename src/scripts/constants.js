@@ -32,5 +32,5 @@ export const OPEN_COVER_ANI_DELAY = 2000;
 /**
  * Open Card Animation
  */
-export const OPEN_CARD_ANI_DURATION = 5000;
-export const OPEN_CARD_ANI_EASING_TYPE = 'easeInOutSine';
+export const OPEN_CARD_ANI_DURATION = 1000;
+export const OPEN_CARD_ANI_EASING_TYPE = 'easeOutBack';

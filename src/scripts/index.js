@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === 'development') {
 const ENV_WRAPPER = '.env-wrapper';
 const ENV_COVER = '.env-cover';
 const ENV_CARD = '.env-card';
+const ENV_BODY = '.env-body';
 
 /**
  * Scale Envelope Animation
@@ -36,6 +37,14 @@ const openCoverAni = anime({
   duration: Config.OPEN_COVER_ANI_DURATION,
   delay: Config.OPEN_COVER_ANI_DELAY,
   easing: Config.OPEN_COVER_ANI_EASING_TYPE,
+  update: (ani) => {
+    console.log('fasdfasdfasdfasd', ani);
+    const coverEl = document.querySelector(ENV_COVER);
+    if (ani.progress > 64.285) {
+      if (!coverEl.classList.contains('opened'))
+        coverEl.classList.add('opened');
+    }
+  },
   autoplay: false,
 });
 
@@ -50,8 +59,14 @@ const openCardAnimation = anime({
     },
   },
   duration: Config.OPEN_CARD_ANI_DURATION,
-  direction: 'alternate',
   easing: Config.OPEN_CARD_ANI_EASING_TYPE,
+  update: (ani) => {
+    if (ani.progress === 100) {
+      document.querySelector(ENV_CARD).style['z-index'] =
+        Config.CARD_Z_INDEX_AFTER;
+    }
+  },
+  direction: 'alternate',
   autoplay: false,
 });
 
@@ -75,6 +90,11 @@ const openCardAni = () => {
   return Promise.all([openCardAnimation.finished]);
 };
 
+const reverseCardAni = () => {
+  openCardAnimation.reverse();
+  return Promise.all([openCardAnimation.finished]);
+};
+
 (async function () {
   await init();
   await scaleAndOpenCoverAni();
@@ -83,4 +103,6 @@ const openCardAni = () => {
     Config.COVER_Z_INDEX_AFTER;
 
   await openCardAni();
+  document.querySelector(ENV_CARD).style['z-index'] = Config.CARD_Z_INDEX_AFTER;
+  await reverseCardAni();
 }.call(this));
