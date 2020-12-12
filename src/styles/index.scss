@@ -1,3 +1,24 @@
+@font-face {
+  font-family: BayShore;
+  src: url('./../fonts/Bayshore.otf') format('opentype');
+}
+
+@font-face {
+  font-family: DINPro;
+  src: url('./../fonts/DINPro-Medium\ copy\ 2.otf') format('opentype');
+}
+
+@font-face {
+  font-family: DINPro;
+  font-weight: bold;
+  src: url('./../fonts/DINPro-Bold\ copy\ 2.otf') format('opentype');
+}
+
+@font-face {
+  font-family: LeagueGothic;
+  src: url('./../fonts/LeagueGothic-Regular.otf') format('opentype');
+}
+
 //Variables
 $paddingY: 10vh;
 $rate: 0.5922;
@@ -46,6 +67,10 @@ html {
   right: 0;
   position: absolute;
   z-index: 1000;
+
+  & .env-card-back {
+    display: none;
+  }
 }
 
 .env-body {
@@ -72,6 +97,7 @@ html {
   transform-origin: right;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+
   &.opened {
     background: url(./../images/cover-in.png) center right no-repeat;
     background-size: auto 100%;
