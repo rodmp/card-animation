@@ -32,5 +32,11 @@ export const OPEN_COVER_ANI_DELAY = 2000;
 /**
  * Open Card Animation
  */
-export const OPEN_CARD_ANI_DURATION = 5000;
-export const OPEN_CARD_ANI_EASING_TYPE = 'easeInOutSine';
+export const OPEN_CARD_ANI_DURATION = 1000;
+export const OPEN_CARD_ANI_EASING_TYPE = 'easeOutBack';
+
+/**
+ * Card Text
+ */
+export const CARD_FRONT_TEXT = 'HOLIDAY CHEER FOR THE NEW YEAR';
+export const CARD_BACK_TEXT = '';
