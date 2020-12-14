@@ -10,8 +10,9 @@ export const INIT_SCALE_ANI_EASING_TYPE = 'easeOutBack';
 /**
  * z-index values
  */
-export const CARD_Z_INDEX_AFTER = 10000;
-export const CARD_Z_INDEX_BEFORE = 1000;
+
+export const BODY_Z_INDEX_AFTER = 995;
+export const BODY_Z_INDEX_BEFORE = 1005;
 
 export const COVER_Z_INDEX_AFTER = 995;
 export const COVER_Z_INDEX_BEFORE = 1005;

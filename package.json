@@ -2,11 +2,19 @@
   "name": "e-card-animation",
   "version": "1.0.0",
   "description": "Envelope Card Animation for Christmas Celebration.",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "start": "webpack serve --config webpack/webpack.config.dev.js"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "animejs": "^3.2.1",
+    "core-js": "^3.8.1",
+    "express": "^4.17.1",
     "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
@@ -31,10 +39,5 @@
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.4.0"
-  },
-  "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "animejs": "^3.2.1",
-    "core-js": "^3.8.1"
   }
 }

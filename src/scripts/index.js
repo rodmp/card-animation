@@ -28,8 +28,8 @@ let lastName = urlParams.get('last_name') ? urlParams.get('last_name') : '';
  * Init Function
  */
 const init = () => {
-  document.querySelector(Selectors.ENV_CARD).style['z-index'] =
-    Config.CARD_Z_INDEX_BEFORE;
+  document.querySelector(Selectors.ENV_BODY).style['z-index'] =
+    Config.BODY_Z_INDEX_BEFORE;
 
   document.querySelector(Selectors.ENV_COVER).style['z-index'] =
     Config.COVER_Z_INDEX_BEFORE;
@@ -43,9 +43,16 @@ const init = () => {
     );
   });
 
+  /**
+   * Render name dynamically
+   */
   document.querySelector(
     Selectors.BACK_CARD_NAME_TEXT
   ).innerHTML = `DEAR ${firstName} ${lastName}`;
+
+  document
+    .querySelector(Selectors.MODAL_CLOSE_BTN)
+    .addEventListener('click', handleClickCloseBtn);
 
   /**
    *
@@ -148,10 +155,21 @@ const handleClickCard = async (event) => {
     return;
   }
   if (cardStatus === Card_Status.Turned) {
+    const overlayEl = document.querySelector(Selectors.MODAL_OVERLAY);
+    if (!overlayEl.classList.contains('opened')) {
+      overlayEl.classList.add('opened');
+    }
     return;
   }
   if (cardStatus === Card_Status.Clicked) {
     return;
+  }
+};
+
+const handleClickCloseBtn = (e) => {
+  const overlayEl = document.querySelector(Selectors.MODAL_OVERLAY);
+  if (overlayEl.classList.contains('opened')) {
+    overlayEl.classList.remove('opened');
   }
 };
 
