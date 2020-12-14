@@ -268,12 +268,194 @@ html {
 .env-card-front-character-background {
   position: absolute;
   margin: auto;
-  width: 200%;
-  height: 60%;
+  width: (100vh - $paddingY) * 0.1;
+  height: (100vh - $paddingY) * 0.1;
   top: -5%;
   bottom: 0;
   left: -25%;
   right: 0;
   opacity: 0;
   content: '';
+}
+
+// Snow Animation
+
+.drop {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  border-radius: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px #fff;
+}
+
+.animate {
+  animation: falling 5.5s infinite ease-in;
+}
+
+// Lamp Animation
+@keyframes falling {
+  0% {
+    top: -10px;
+  }
+  10% {
+    transform: translateX(-5px);
+  }
+  20% {
+    transform: translateX(5px);
+  }
+  30% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  70% {
+    transform: translateX(5px);
+  }
+  80% {
+    transform: translateX(-5px);
+  }
+  90% {
+    transform: translateX(5px);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: 95vh;
+    opacity: 0;
+  }
+}
+.line {
+  text-align: center;
+}
+.light ul {
+  display: block;
+  white-space: nowrap;
+}
+li {
+  position: relative;
+  margin: 0 15px;
+  list-style: none;
+  padding: 0;
+  display: inline-block;
+  width: 12px;
+  height: 28px;
+  border-radius: 50%;
+  top: 35px;
+  background: #fff;
+}
+li:before {
+  content: '';
+  position: absolute;
+  background: #222;
+  width: 10px;
+  height: 9px;
+  border-radius: 3px;
+  top: -4px;
+  left: 1px;
+}
+li:after {
+  content: '';
+  top: -14px;
+  left: 9px;
+  position: absolute;
+  width: 52px;
+  height: 19px;
+  border-bottom: solid #222 2px;
+  border-radius: 30%;
+}
+
+.red {
+  background-color: #fb4545;
+  animation: lightningRed 1s infinite;
+}
+
+.green {
+  background-color: #24d024;
+  animation: lightningGreen 0.8s infinite;
+}
+
+.yellow {
+  background-color: #fff952;
+  animation: lightningYellow 0.9s infinite;
+}
+
+.blue {
+  background-color: #0a53de;
+  animation: lightningBlue 1.1s infinite;
+}
+
+.pink {
+  background-color: #f53896;
+  animation: lightningPink 1.2s infinite;
+}
+
+@keyframes lightningRed {
+  0% {
+    box-shadow: 5px 10px 35px 10px #fb4545;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 10px 35px 10px #fb4545;
+  }
+}
+@keyframes lightningGreen {
+  0% {
+    box-shadow: 5px 0 35px 10px #24d024;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 0 35px 10px #24d024;
+  }
+}
+@keyframes lightningYellow {
+  0% {
+    box-shadow: 5px 0 35px 10px #fff952;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 0 35px 10px #fff952;
+  }
+}
+@keyframes lightningBlue {
+  0% {
+    box-shadow: 5px 0 35px 10px #0a53de;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 0 35px 10px #0a53de;
+  }
+}
+@keyframes lightningPink {
+  0% {
+    box-shadow: 5px 0 35px 10px #f53896;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 0 35px 10px #f53896;
+  }
+}
+@media (max-width: 1024px) {
+  .line {
+    padding: 0;
+  }
+
+  li {
+    margin: 0 15px 20px 15px;
+  }
 }

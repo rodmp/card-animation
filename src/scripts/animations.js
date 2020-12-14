@@ -64,26 +64,29 @@ export const openFrontCardTextAnimation = anime.timeline();
 
 export const showFrontCardTextAnimations = () => {
   return Config.FRONT_TEXT_DEST_COLORS.map((color, i) => {
+    const textEl = document.querySelectorAll(
+      Selectors.FRONT_CARD_TEXT_CHARACTER
+    )[i];
+    const backgroundEl = document.querySelectorAll(
+      Selectors.FRONT_CARD_TEXT_BACKGROUND
+    )[i];
     return anime
       .timeline({
         direction: 'alternate',
         autoplay: false,
       })
       .add({
-        targets: `${Selectors.FRONT_CARD_TEXT_CHARACTER}:nth-of-child(${
-          i + 1
-        })`,
+        targets: textEl,
         color: color,
         easing: 'linear',
-        duration: 1000,
+        textShadow: `0 13.36px 8.896px ${color},0 5px 1px #fff`,
+        duration: Config.FRONT_TEXT_ANI_DURATION,
       })
       .add({
-        targets: `${Selectors.FRONT_CARD_TEXT_BACKGROUND}:nth-of-child(${
-          i + 1
-        })`,
-        duration: 1000,
-        easing: 'easeOutQuint',
-        opacity: [0, 0.5],
+        targets: backgroundEl,
+        duration: Config.FRONT_TEXT_ANI_DURATION,
+        opacity: 0.8,
+        easing: 'linear',
       });
   });
 };

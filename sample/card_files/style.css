@@ -6,6 +6,9 @@
 .gradient-text {
   color: #b39a5d;
 }
+.gradient-text span {
+	transform:rotate(-90deg;);
+}
 .backgroundcliptext .gradient-text {
   background: linear-gradient(45deg, #b39a5d 0%, #c9bb9d 25%, #b39a5d 50%, #c9bb9d 100%);
   -webkit-background-clip: text;
@@ -282,6 +285,7 @@
 .b__card-animated .input-heading {
   font-size: 14px;
   top: 39%;
+  margin-top:-134px;
 }
 @media screen and (max-width: 768px) {
   .b__card-animated .input-heading {
@@ -310,9 +314,13 @@
           animation: env-wrapper 1.5s linear 0.5s forwards;
 }
 .env-wrapper img {
-  max-width: 100%;
   display: block;
   margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+  .env-wrapper {
+    width:-30%;
+  }
 }
 
 @-webkit-keyframes env-wrapper {
@@ -330,7 +338,7 @@
   }
   100% {
     -webkit-transform: translate(0%, 0%) scale(1);
-            transform: translate(0%, 0%) scale(1);
+            transform: translate(0%, 0%) scale(1.80);
   }
 }
 
@@ -345,7 +353,7 @@
   }
   99% {
     -webkit-transform: translate(0%, 0%) scale(1);
-            transform: translate(0%, 0%) scale(1);
+            transform: translate(0%, 0%) scale(1.12);
   }
   100% {
     -webkit-transform: translate(0%, 0%) scale(1.10);
@@ -423,7 +431,7 @@
 }
 .env-top {
   position: absolute;
-  top: 3px;
+  top: 0px;
   left: 0;
   z-index: 2;
   -webkit-transform-origin: top;
@@ -523,7 +531,6 @@
 }
 .env-card img {
   max-width: auto;
-  width: 95%;
 }
 @media screen and (max-width: 1000px) {
   .env-card {
@@ -650,8 +657,15 @@
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   position: relative;
+  width:20;
   z-index: 1;
 }
+.env-card--frontside img {
+	transform:rotate(-90deg);
+	position:relative;
+	z-index: 1;
+}
+
 
 .env-card--backside {
   -webkit-backface-visibility: hidden;
@@ -725,9 +739,11 @@
   position: relative;
   z-index: 1;
 }
+.env-bb {
+	  background-color:#990000;
+}
 
 .flip-btn {
-  position: absolute;
   top: 15px;
   text-align: center;
   left: 50%;
@@ -739,11 +755,21 @@
   cursor: pointer;
   z-index: 5;
 }
+
 .flip-btn span {
   font-size: 19px;
+  position:absolute;
+}
+@media screen and (max-width: 1024px) {
+  .flip-btn img {
+    width:51%;
+  margin-top: 10px;
+  margin-bottom:-135px;
+}
 }
 .flip-btn img {
   margin-top: 10px;
+  margin-bottom:-157px;
 }
 @media screen and (max-width: 768px) {
   .flip-btn.mobile-visible {
@@ -793,6 +819,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+  padding-bottom:154px;
 }
 
 
@@ -855,6 +882,200 @@
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
   .modal-content {
-    width: 100%;
+    height: 100%;
+  }
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Cookie");
+body {
+  background-color: #000000;
+}
+
+h1 {
+  font-family: 'Cookie', cursive;
+  font-size: 80px;
+  text-align: center;
+  color: white;
+  letter-spacing: 3px;
+}
+
+.drop {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  border-radius: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px #FFF;
+}
+
+.animate {
+  animation: falling 5.5s infinite ease-in;
+}
+
+@keyframes falling {
+  0% {
+    top: -10px;
+  }
+  10% {
+    transform: translateX(-5px);
+  }
+  20% {
+    transform: translateX(5px);
+  }
+  30% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  70% {
+    transform: translateX(5px);
+  }
+  80% {
+    transform: translateX(-5px);
+  }
+  90% {
+    transform: translateX(5px);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: 95vh;
+    opacity: 0;
+  }
+}
+.line {
+  text-align: center;
+}
+.light ul {
+	display:block;
+	  white-space:nowrap;
+
+}
+li {
+  position: relative;
+  margin: 0 15px;
+  list-style: none;
+  padding: 0;
+  display: inline-block;
+  width: 12px;
+  height: 28px;
+  border-radius: 50%;
+  top: 35px;
+  background: #fff;
+}
+li:before {
+  content: "";
+  position: absolute;
+  background: #222;
+  width: 10px;
+  height: 9px;
+  border-radius: 3px;
+  top: -4px;
+  left: 1px;
+}
+li:after {
+  content: "";
+  top: -14px;
+  left: 9px;
+  position: absolute;
+  width: 52px;
+  height: 19px;
+  border-bottom: solid #222 2px;
+  border-radius: 30%;
+}
+
+.red {
+  background-color: #fb4545;
+  animation: lightningRed 1s infinite;
+}
+
+.green {
+  background-color: #24D024;
+  animation: lightningGreen 0.8s infinite;
+}
+
+.yellow {
+  background-color: #fff952;
+  animation: lightningYellow 0.9s infinite;
+}
+
+.blue {
+  background-color: #0A53DE;
+  animation: lightningBlue 1.1s infinite;
+}
+
+.pink {
+  background-color: #f53896;
+  animation: lightningPink 1.2s infinite;
+}
+
+@keyframes lightningRed {
+  0% {
+    box-shadow: 5px 10px 35px 10px #fb4545;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 10px 35px 10px #fb4545;
+  }
+}
+@keyframes lightningGreen {
+  0% {
+    box-shadow: 5px 0 35px 10px #24D024;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 0 35px 10px #24D024;
+  }
+}
+@keyframes lightningYellow {
+  0% {
+    box-shadow: 5px 0 35px 10px #fff952;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 0 35px 10px #fff952;
+  }
+}
+@keyframes lightningBlue {
+  0% {
+    box-shadow: 5px 0 35px 10px #0A53DE;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 0 35px 10px #0A53DE;
+  }
+}
+@keyframes lightningPink {
+  0% {
+    box-shadow: 5px 0 35px 10px #f53896;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 0 35px 10px #f53896;
+  }
+}
+@media (max-width: 1024px) {
+  .line {
+    padding: 0;
+  }
+
+  li {
+    margin: 0 15px 20px 15px;
   }
 }

@@ -41,6 +41,10 @@ export const OPEN_CARD_ANI_EASING_TYPE = 'easeOutBack';
 export const CARD_FRONT_TEXT = 'HOLIDAY CHEER FOR THE NEW YEAR';
 export const CARD_BACK_TEXT = '';
 
+/**
+ * Front Text
+ */
+export const FRONT_TEXT_ANI_DURATION = 250;
 export const FRONT_TEXT_DEST_COLORS = [
   `rgba(242, 123, 170, 0.8)`,
   `rgba(44, 41, 113, 0.8)`,
