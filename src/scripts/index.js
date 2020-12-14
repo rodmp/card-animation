@@ -8,6 +8,22 @@ if (process.env.NODE_ENV === 'development') {
   require('../index.html');
 }
 
+const Card_Status = {
+  Closed: 0,
+  Opened: 1,
+  Turned: 2,
+  Clicked: 3,
+};
+
+let cardStatus = Card_Status.Closed;
+
+/**
+ * Get names
+ */
+const urlParams = new URLSearchParams(window.location.search);
+let firstName = urlParams.get('first_name') ? urlParams.get('first_name') : '';
+let lastName = urlParams.get('last_name') ? urlParams.get('last_name') : '';
+
 /**
  * Init Function
  */
@@ -27,10 +43,22 @@ const init = () => {
     );
   });
 
+  document.querySelector(
+    Selectors.BACK_CARD_NAME_TEXT
+  ).innerHTML = `DEAR ${firstName} ${lastName}`;
+
+  /**
+   *
+   * @param {*} min
+   * @param {*} max
+   */
   const randomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
+  /**
+   * Snow Animation
+   */
   var limit_flake = 50;
   setInterval(function () {
     let dimension = randomInt(3, 9) + 'px';
@@ -44,7 +72,7 @@ const init = () => {
       "'></div>";
     document.querySelector('body').insertAdjacentHTML('beforeend', flake);
 
-    var list_flake = $('.drop');
+    var list_flake = document.querySelectorAll('.drop');
     if (list_flake.length > limit_flake)
       list_flake[list_flake.length - 1].remove();
   }, 200);
@@ -81,13 +109,6 @@ const writeFrontTextAni = () => {
       duration: 1300,
       delay: (el, i) => 45 * i,
     })
-    // .add({ // scale
-    //   targets: Selectors.FRONT_CARD_TEXT_CHARACTER,
-    //   scale: [0, 1],
-    //   duration: 1500,
-    //   elasticity: 600,
-    //   delay: (el, i) => 45 * (i + 1),
-    // })
     .restart();
   return Promise.all([Ani.openFrontCardTextAnimation.finished]);
 };
@@ -107,14 +128,51 @@ const showFrontTextAni = (animations) => {
   });
 };
 
+/**
+ * Turn Card Animation
+ *
+ */
+const turnCardAnimation = () => {
+  Ani.turnCardAnimation.restart();
+  return Promise.all[Ani.turnCardAnimation.finished];
+};
+
+const handleClickCard = async (event) => {
+  if (cardStatus === Card_Status.Closed) {
+    return;
+  }
+  if (cardStatus === Card_Status.Opened) {
+    //Turn Card
+    await turnCardAnimation();
+    cardStatus = Card_Status.Turned;
+    return;
+  }
+  if (cardStatus === Card_Status.Turned) {
+    return;
+  }
+  if (cardStatus === Card_Status.Clicked) {
+    return;
+  }
+};
+
 (async function () {
   await init();
   await scaleAndOpenCoverAni();
+
   //Change z-index of Envelope Cover
   document.querySelector(Selectors.ENV_COVER).style['z-index'] =
     Config.COVER_Z_INDEX_AFTER;
-  await openCardAni();
 
-  await writeFrontTextAni();
+  await openCardAni();
+  cardStatus = Card_Status.Opened;
+
+  /**
+   * Add click event in Card
+   */
+  document
+    .querySelector(Selectors.ENV_CARD)
+    .addEventListener('click', handleClickCard);
+
+  // await writeFrontTextAni();
   showFrontTextAni(Ani.showFrontCardTextAnimations());
 })();

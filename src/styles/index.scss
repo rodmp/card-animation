@@ -33,8 +33,9 @@ html {
   background-size: cover;
 }
 
-.container {
+.env-container {
   max-width: $rate * 100vh - $paddingY;
+  min-width: $rate * 100vh - $paddingY;
   max-height: 100%;
   margin: 0 auto;
   padding: $paddingY/2 0;
@@ -56,6 +57,8 @@ html {
 }
 
 .env-card {
+  display: flex;
+  align-items: center;
   background: url(./../images/card-background.png) no-repeat;
   background-size: 100% 100%;
   height: (100vh - $paddingY) * $cardScaleY;
@@ -70,6 +73,20 @@ html {
 
   & .env-card-back {
     display: none;
+  }
+
+  & .env-card-front {
+    display: block;
+  }
+
+  &.turned {
+    & .env-card-back {
+      display: block;
+    }
+
+    & .env-card-front {
+      display: none;
+    }
   }
 }
 
@@ -94,8 +111,10 @@ html {
   position: absolute;
   z-index: 1010;
   -webkit-transform-origin: right;
+  -moz-transform-origin: right;
   transform-origin: right;
   -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 
   &.opened {
@@ -125,36 +144,36 @@ html {
       letter-spacing: -(100vh - $paddingY) * 0.015;
 
       span:nth-child(1) {
-        color: #f27baa;
+        color: rgba(242, 123, 170, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.03;
       }
 
       span:nth-child(2) {
-        color: rgba($color: #2c2971, $alpha: 0.15);
+        color: rgba(44, 41, 113, 0.8);
       }
 
       span:nth-child(3) {
-        color: rgba($color: #ef4035, $alpha: 0.38);
+        color: rgba(237, 28, 36, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.005;
       }
 
       span:nth-child(4) {
-        color: rgba($color: #faed24, $alpha: 0.44);
+        color: rgba(234, 215, 41, 0.8);
         letter-spacing: (100vh - $paddingY) * 0.007;
       }
 
       span:nth-child(5) {
-        color: #3db54a;
+        color: rgba(141, 198, 65, 1);
         letter-spacing: -(100vh - $paddingY) * 0.038;
       }
 
       span:nth-child(6) {
-        color: rgba($color: #272361, $alpha: 0.54);
+        color: rgba(46, 54, 144, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.02;
       }
 
       span:nth-child(7) {
-        color: rgba($color: #ef4035, $alpha: 0.72);
+        color: rgba($color: rgba(239, 64, 53, 0.8), $alpha: 0.72);
       }
     }
 
@@ -163,27 +182,27 @@ html {
       letter-spacing: -(100vh - $paddingY) * 0.015;
 
       & > span:nth-child(1) {
-        color: #00a99d;
+        color: rgba(0, 169, 157, 0.9);
         letter-spacing: (100vh - $paddingY) * 0.002;
       }
 
       & > span:nth-child(2) {
-        color: rgba($color: #f79226, $alpha: 0.29);
+        color: rgba(241, 91, 39, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.015;
       }
 
       & > span:nth-child(3) {
-        color: #ef4035;
+        color: rgba(237, 28, 36, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.01;
       }
 
       & > span:nth-child(4) {
-        color: rgba($color: #ef4035, $alpha: 0.08);
+        color: rgba(242, 123, 170, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.03;
       }
 
       & > span:nth-child(5) {
-        color: rgba($color: #d9e026, $alpha: 0.56);
+        color: rgba(141, 198, 65, 0.8);
       }
     }
 
@@ -192,31 +211,31 @@ html {
       letter-spacing: -(100vh - $paddingY) * 0.015;
 
       & > span:nth-child(1) {
-        color: rgba($color: #ef4035, $alpha: 0.22);
+        color: rgba(239, 64, 53, 0.8);
       }
 
       & > span:nth-child(2) {
-        color: rgba($color: #d52027, $alpha: 0.44);
+        color: rgba(213, 32, 39, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.022;
       }
 
       & > span:nth-child(3) {
-        color: rgba($color: #079247, $alpha: 0.7);
+        color: rgba(4, 105, 55, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.01;
       }
 
       & > span:nth-child(5) {
-        color: rgba($color: #faed24, $alpha: 0.19);
+        color: rgba(234, 215, 41, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.015;
       }
 
       & > span:nth-child(6) {
-        color: rgba($color: #2c2971, $alpha: 0.76);
+        color: rgba(46, 54, 144, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.027;
       }
 
       & > span:nth-child(7) {
-        color: rgba($color: #d52027, $alpha: 0.44);
+        color: rgba(213, 32, 39, 0.8);
       }
     }
 
@@ -225,36 +244,36 @@ html {
       letter-spacing: -(100vh - $paddingY) * 0.015;
 
       & > span:nth-child(1) {
-        color: rgba($color: #2c2971, $alpha: 0.44);
+        color: rgba(39, 35, 97, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.005;
       }
 
       & > span:nth-child(2) {
-        color: rgba($color: #ef4035, $alpha: 0.06);
+        color: rgba(239, 64, 53, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.024;
       }
 
       & > span:nth-child(3) {
-        color: rgba($color: #f27baa, $alpha: 0.77);
+        color: rgba(242, 123, 170, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.01;
       }
 
       & > span:nth-child(5) {
-        color: #00a99d;
+        color: rgba(0, 169, 157, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.02;
       }
 
       & > span:nth-child(6) {
-        color: rgba($color: #ef4035, $alpha: 0.44);
+        color: rgba(237, 28, 36, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.017;
       }
 
       & > span:nth-child(7) {
-        color: rgba($color: #faed24, $alpha: 0.56);
+        color: rgba(234, 215, 41, 0.8);
       }
 
       & > span:nth-child(8) {
-        color: rgba($color: #046937, $alpha: 0.77);
+        color: rgba(11, 118, 60, 0.8);
       }
     }
   }
@@ -276,6 +295,63 @@ html {
   right: 0;
   opacity: 0;
   content: '';
+}
+
+.env-card-back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+
+  line-height: 1.2;
+  font-family: DINPro;
+  padding: 3vh;
+
+  & strong {
+    font-family: DINPro;
+    font-weight: bold;
+  }
+}
+
+.env-card-back-logo {
+  background: url(./../images/back-logo.png);
+  width: 3vh;
+  height: 3vh;
+  background-size: 100% 100%;
+}
+
+.env-card-back-footer {
+  background: url(./../images/back-footer.png) center center no-repeat;
+  background-size: 100% auto;
+  width: 100%;
+  height: 20vh;
+}
+
+.env-card-back-name-text {
+  font-size: 3vh;
+  color: red;
+  line-height: 1;
+  padding: 0;
+  margin: 2vh 0 0vh;
+  text-transform: uppercase;
+  font-family: LeagueGothic, sans-serif;
+}
+
+.env-card-back-content-sign {
+  font-family: BayShore, sans-serif;
+  font-size: 3vh;
+  margin: 0;
+
+  & + p {
+    margin: 0;
+  }
+}
+
+.env-card-back-content {
+  font-size: 1.45vh;
+}
+
+.env-card-back-content > p:first-child {
+  margin-top: 1vh;
 }
 
 // Snow Animation

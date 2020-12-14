@@ -30,7 +30,10 @@ export const openCoverAni = anime({
   easing: Config.OPEN_COVER_ANI_EASING_TYPE,
   update: (ani) => {
     const coverEl = document.querySelector(Selectors.ENV_COVER);
-    if (ani.progress > 64.285) {
+    const rate =
+      (Config.OPEN_COVER_ANI_DURATION / 2 + Config.OPEN_COVER_ANI_DELAY) /
+      (Config.OPEN_COVER_ANI_DURATION + Config.OPEN_COVER_ANI_DELAY);
+    if (ani.progress > rate * 100) {
       if (!coverEl.classList.contains('opened'))
         coverEl.classList.add('opened');
     }
@@ -60,8 +63,14 @@ export const openCardAnimation = anime({
   autoplay: false,
 });
 
+/**
+ * Write Front Card Text Animation
+ */
 export const openFrontCardTextAnimation = anime.timeline();
 
+/**
+ * Show front Card Text Animations
+ */
 export const showFrontCardTextAnimations = () => {
   return Config.FRONT_TEXT_DEST_COLORS.map((color, i) => {
     const textEl = document.querySelectorAll(
@@ -79,14 +88,32 @@ export const showFrontCardTextAnimations = () => {
         targets: textEl,
         color: color,
         easing: 'linear',
-        textShadow: `0 13.36px 8.896px ${color},0 5px 1px #fff`,
+        textShadow: `0 0px 8px ${color}`,
         duration: Config.FRONT_TEXT_ANI_DURATION,
       })
       .add({
         targets: backgroundEl,
         duration: Config.FRONT_TEXT_ANI_DURATION,
-        opacity: 0.8,
+        opacity: 1,
         easing: 'linear',
       });
   });
 };
+
+/**
+ * Turn CardAnimation
+ */
+export const turnCardAnimation = anime({
+  targets: Selectors.ENV_CARD,
+  rotateY: '180',
+  duration: Config.TURN_CARD_ANI_DURATION,
+  easing: Config.TURN_CARD_ANI_EASING_TYPE,
+  update: (ani) => {
+    const coverEl = document.querySelector(Selectors.ENV_CARD);
+    if (ani.progress > 50) {
+      if (!coverEl.classList.contains('turned'))
+        coverEl.classList.add('turned');
+    }
+  },
+  autoplay: false,
+});
