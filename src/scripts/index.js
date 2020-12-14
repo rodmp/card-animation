@@ -4,12 +4,13 @@ import * as Selectors from './selectors';
 import * as Ani from './animations';
 import anime from 'animejs';
 
-const showFrontCardTextAnimations = Ani.showFrontCardTextAnimations();
-
 if (process.env.NODE_ENV === 'development') {
   require('../index.html');
 }
 
+/**
+ * Init Function
+ */
 const init = () => {
   document.querySelector(Selectors.ENV_CARD).style['z-index'] =
     Config.CARD_Z_INDEX_BEFORE;
@@ -25,8 +26,33 @@ const init = () => {
       `<div class="env-card-front-character-background" style="background-image: radial-gradient(circle at center, ${Config.FRONT_TEXT_DEST_COLORS[i]}, ${Config.FRONT_TEXT_DEST_COLORS[i]} 50%, rgba(255,255,255,0) 75%);"></div>`
     );
   });
+
+  const randomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  var limit_flake = 50;
+  setInterval(function () {
+    let dimension = randomInt(3, 9) + 'px';
+    var flake =
+      "<div class='drop animate' style='left:" +
+      randomInt(10, window.innerWidth - 20) +
+      'px;width:' +
+      dimension +
+      ';height:' +
+      dimension +
+      "'></div>";
+    document.querySelector('body').insertAdjacentHTML('beforeend', flake);
+
+    var list_flake = $('.drop');
+    if (list_flake.length > limit_flake)
+      list_flake[list_flake.length - 1].remove();
+  }, 200);
 };
 
+/**
+ * Scale Animation and Open Cover Animation
+ */
 const scaleAndOpenCoverAni = () => {
   Ani.scaleAni.restart();
   Ani.openCoverAni.restart();
@@ -34,12 +60,19 @@ const scaleAndOpenCoverAni = () => {
   return Promise.all([Ani.scaleAni.finished, Ani.openCoverAni.finished]);
 };
 
+/**
+ * Open Card Animation
+ *
+ */
 const openCardAni = () => {
   Ani.openCardAnimation.restart();
   return Promise.all([Ani.openCardAnimation.finished]);
 };
 
-const openFrontTextAni = () => {
+/**
+ * Write FrontText Animation
+ */
+const writeFrontTextAni = () => {
   Ani.openFrontCardTextAnimation
     .add({
       // rotate
@@ -55,18 +88,22 @@ const openFrontTextAni = () => {
     //   elasticity: 600,
     //   delay: (el, i) => 45 * (i + 1),
     // })
-
     .restart();
   return Promise.all([Ani.openFrontCardTextAnimation.finished]);
 };
 
-const showFrontTextAni = () => {
+/**
+ * Show Front Text Animations
+ *
+ * @param {*} animations
+ */
+const showFrontTextAni = (animations) => {
   const random = anime.random(0, 24);
   console.log(random);
-  const showTextAni = showFrontCardTextAnimations[anime.random(0, 24)];
+  const showTextAni = animations[anime.random(0, 24)];
   showTextAni.restart();
   showTextAni.finished.then(() => {
-    showFrontTextAni();
+    showFrontTextAni(animations);
   });
 };
 
@@ -78,7 +115,6 @@ const showFrontTextAni = () => {
     Config.COVER_Z_INDEX_AFTER;
   await openCardAni();
 
-  await openFrontTextAni();
-
-  showFrontTextAni();
+  await writeFrontTextAni();
+  showFrontTextAni(Ani.showFrontCardTextAnimations());
 })();
