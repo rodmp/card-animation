@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Envelope Card Animation for Christmas Celebration.",
   "scripts": {
-    "lint": "npm run lint:styles; npm run lint:scripts",
-    "lint:styles": "stylelint src",
-    "lint:scripts": "eslint src",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "start": "webpack serve --config webpack/webpack.config.dev.js"
   },
@@ -30,9 +27,6 @@
     "postcss-loader": "^4.1.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
-    "stylelint": "^13.8.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-webpack-plugin": "^2.1.1",
     "webpack": "^5.10.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",

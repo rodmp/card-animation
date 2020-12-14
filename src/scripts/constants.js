@@ -40,3 +40,31 @@ export const OPEN_CARD_ANI_EASING_TYPE = 'easeOutBack';
  */
 export const CARD_FRONT_TEXT = 'HOLIDAY CHEER FOR THE NEW YEAR';
 export const CARD_BACK_TEXT = '';
+
+export const FRONT_TEXT_DEST_COLORS = [
+  `rgba(242, 123, 170, 0.8)`,
+  `rgba(44, 41, 113, 0.8)`,
+  `rgba(237, 28, 36, 0.8)`,
+  `rgba(234, 215, 41, 0.8)`,
+  `rgba(141, 198, 65, 1)`,
+  `rgba(46, 54, 144, 0.8)`,
+  `rgba(239, 64, 53, 0.8)`,
+  `rgba(0, 169, 157, 0.9)`,
+  `rgba(241, 91, 39, 0.8)`,
+  `rgba(237, 28, 36, 0.8)`,
+  `rgba(242, 123, 170, 0.8)`,
+  `rgba(141, 198, 65, 0.8)`,
+  `rgba(239, 64, 53, 0.8)`,
+  `rgba(213, 32, 39, 0.8)`,
+  `rgba(4, 105, 55, 0.8)`,
+  `rgba(234, 215, 41, 0.8)`,
+  `rgba(46, 54, 144, 0.8)`,
+  `rgba(213, 32, 39, 0.8)`,
+  `rgba(39, 35, 97, 0.8)`,
+  `rgba(239, 64, 53, 0.8)`,
+  `rgba(242, 123, 170, 0.8)`,
+  `rgba(0, 169, 157, 0.8)`,
+  `rgba(237, 28, 36, 0.8)`,
+  `rgba(234, 215, 41, 0.8)`,
+  `rgba(11, 118, 60, 0.8)`,
+];

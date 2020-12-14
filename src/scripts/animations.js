@@ -29,7 +29,6 @@ export const openCoverAni = anime({
   delay: Config.OPEN_COVER_ANI_DELAY,
   easing: Config.OPEN_COVER_ANI_EASING_TYPE,
   update: (ani) => {
-    console.log('fasdfasdfasdfasd', ani);
     const coverEl = document.querySelector(Selectors.ENV_COVER);
     if (ani.progress > 64.285) {
       if (!coverEl.classList.contains('opened'))
@@ -60,3 +59,31 @@ export const openCardAnimation = anime({
   direction: 'alternate',
   autoplay: false,
 });
+
+export const openFrontCardTextAnimation = anime.timeline();
+
+export const showFrontCardTextAnimations = () => {
+  return Config.FRONT_TEXT_DEST_COLORS.map((color, i) => {
+    return anime
+      .timeline({
+        direction: 'alternate',
+        autoplay: false,
+      })
+      .add({
+        targets: `${Selectors.FRONT_CARD_TEXT_CHARACTER}:nth-of-child(${
+          i + 1
+        })`,
+        color: color,
+        easing: 'linear',
+        duration: 1000,
+      })
+      .add({
+        targets: `${Selectors.FRONT_CARD_TEXT_BACKGROUND}:nth-of-child(${
+          i + 1
+        })`,
+        duration: 1000,
+        easing: 'easeOutQuint',
+        opacity: [0, 0.5],
+      });
+  });
+};

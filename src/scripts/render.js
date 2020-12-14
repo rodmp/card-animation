@@ -1,1 +1,1 @@
-export const renderTextByCharacter = (text) => {};
+export const renderTextByCharacter = (selector, text) => {};
