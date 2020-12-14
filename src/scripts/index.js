@@ -20,8 +20,9 @@ let cardStatus = Card_Status.Closed;
 /**
  * Get names
  */
-const params = new URLSearchParams(window.location.search);
-const { first_name: firstName = '', last_name: lastName = '' } = params;
+const urlParams = new URLSearchParams(window.location.search);
+let firstName = urlParams.get('first_name') ? urlParams.get('first_name') : '';
+let lastName = urlParams.get('last_name') ? urlParams.get('last_name') : '';
 
 /**
  * Init Function
@@ -172,6 +173,6 @@ const handleClickCard = async (event) => {
     .querySelector(Selectors.ENV_CARD)
     .addEventListener('click', handleClickCard);
 
-  await writeFrontTextAni();
+  // await writeFrontTextAni();
   showFrontTextAni(Ani.showFrontCardTextAnimations());
 })();
