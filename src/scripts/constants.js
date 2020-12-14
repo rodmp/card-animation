@@ -72,3 +72,9 @@ export const FRONT_TEXT_DEST_COLORS = [
   `rgba(234, 215, 41, 0.8)`,
   `rgba(11, 118, 60, 0.8)`,
 ];
+
+/**
+ * Open Cover Animation
+ */
+export const TURN_CARD_ANI_DURATION = 2000;
+export const TURN_CARD_ANI_EASING_TYPE = 'easeInOutBack';

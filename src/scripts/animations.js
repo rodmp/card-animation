@@ -60,8 +60,14 @@ export const openCardAnimation = anime({
   autoplay: false,
 });
 
+/**
+ * Write Front Card Text Animation
+ */
 export const openFrontCardTextAnimation = anime.timeline();
 
+/**
+ * Show front Card Text Animations
+ */
 export const showFrontCardTextAnimations = () => {
   return Config.FRONT_TEXT_DEST_COLORS.map((color, i) => {
     const textEl = document.querySelectorAll(
@@ -90,3 +96,21 @@ export const showFrontCardTextAnimations = () => {
       });
   });
 };
+
+/**
+ * Turn CardAnimation
+ */
+export const turnCardAnimation = anime({
+  targets: Selectors.ENV_CARD,
+  rotateY: '180',
+  duration: Config.TURN_CARD_ANI_DURATION,
+  easing: Config.TURN_CARD_ANI_EASING_TYPE,
+  update: (ani) => {
+    const coverEl = document.querySelector(Selectors.ENV_CARD);
+    if (ani.progress > 50) {
+      if (!coverEl.classList.contains('turned'))
+        coverEl.classList.add('turned');
+    }
+  },
+  autoplay: false,
+});
