@@ -87,16 +87,16 @@ export const showFrontCardTextAnimations = () => {
       .add({
         targets: textEl,
         color: color,
-        easing: 'linear',
+        easing: 'easeInOutBounce',
         textShadow: `0 0px 8px ${color}`,
         duration: Config.FRONT_TEXT_ANI_DURATION,
-      })
-      .add({
-        targets: backgroundEl,
-        duration: Config.FRONT_TEXT_ANI_DURATION,
-        opacity: 1,
-        easing: 'linear',
       });
+    // .add({
+    //   targets: backgroundEl,
+    //   duration: Config.FRONT_TEXT_ANI_DURATION,
+    //   opacity: 1,
+    //   easing: 'linear',
+    // });
   });
 };
 
