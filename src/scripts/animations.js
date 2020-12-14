@@ -55,8 +55,8 @@ export const openCardAnimation = anime({
   easing: Config.OPEN_CARD_ANI_EASING_TYPE,
   update: (ani) => {
     if (ani.progress === 100) {
-      document.querySelector(Selectors.ENV_CARD).style['z-index'] =
-        Config.CARD_Z_INDEX_AFTER;
+      document.querySelector(Selectors.ENV_BODY).style['z-index'] =
+        Config.BODY_Z_INDEX_AFTER;
     }
   },
   direction: 'alternate',
