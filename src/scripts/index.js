@@ -22,8 +22,8 @@ let modalCard = null;
  * Get names
  */
 const urlParams = new URLSearchParams(window.location.search);
-let firstName = urlParams.get('first_name') ? urlParams.get('first_name') : '';
-let lastName = urlParams.get('last_name') ? urlParams.get('last_name') : '';
+let firstName = urlParams.get('firstname') ? urlParams.get('firstname') : '';
+let lastName = urlParams.get('lastname') ? urlParams.get('lastname') : '';
 
 /**
  * Init Function
