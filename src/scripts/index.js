@@ -151,8 +151,8 @@ const handleClickCard = async (event) => {
   }
   if (cardStatus === Card_Status.Opened) {
     //Turn Card
-    await turnCardAnimation();
-    cardStatus = Card_Status.Turned;
+    // await turnCardAnimation();
+    // cardStatus = Card_Status.Turned;
     return;
   }
   if (cardStatus === Card_Status.Turned) {
@@ -209,4 +209,9 @@ const handleClickCloseBtn = (e) => {
 
   // await writeFrontTextAni();
   showFrontTextAni(Ani.showFrontCardTextAnimations());
+
+  setTimeout(async () => {
+    await turnCardAnimation();
+    cardStatus = Card_Status.Turned;
+  }, 3000);
 })();
