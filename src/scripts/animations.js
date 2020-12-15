@@ -106,3 +106,14 @@ export const turnCardAnimation = anime({
   },
   autoplay: false,
 });
+
+/**
+ * Rotate Card
+ */
+export const rotateCardAnimation = anime({
+  targets: Selectors.ENV_CARD,
+  rotate: -Config.LEAN_DEG,
+  duration: 500,
+  easing: 'linear',
+  autoplay: false,
+});

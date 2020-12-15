@@ -16,6 +16,7 @@ const Card_Status = {
 };
 
 let cardStatus = Card_Status.Closed;
+let modalCard = null;
 
 /**
  * Get names
@@ -155,10 +156,22 @@ const handleClickCard = async (event) => {
     return;
   }
   if (cardStatus === Card_Status.Turned) {
+    //Show modal
     const overlayEl = document.querySelector(Selectors.MODAL_OVERLAY);
     if (!overlayEl.classList.contains('opened')) {
       overlayEl.classList.add('opened');
     }
+
+    // Get the element
+    var elem = document.querySelector(Selectors.ENV_CARD);
+    // Create a copy of it
+    modalCard = elem.cloneNode(true);
+
+    // Update the ID and add a class
+    modalCard.id = 'modal-card';
+
+    // Inject it into the DOM
+    overlayEl.appendChild(modalCard);
     return;
   }
   if (cardStatus === Card_Status.Clicked) {
@@ -171,6 +184,9 @@ const handleClickCloseBtn = (e) => {
   if (overlayEl.classList.contains('opened')) {
     overlayEl.classList.remove('opened');
   }
+
+  modalCard.remove();
+  modalCard = null;
 };
 
 (async function () {

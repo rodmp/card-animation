@@ -87,6 +87,10 @@ html {
   }
 }
 
+.env-card#modal-card {
+  max-width: $rate * 100vh - $paddingY;
+}
+
 .env-body {
   background: url(./../images/envelope.png) no-repeat;
   background-size: 100% 100%;
