@@ -136,6 +136,7 @@ html {
   margin-block-start: (100vh - $paddingY) * 0.05;
   margin-block-end: (100vh - $paddingY) * 0.05;
   letter-spacing: -(100vh - $paddingY) * 0.0065;
+  font-weight: normal;
 
   & > span {
     display: block;
