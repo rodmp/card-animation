@@ -30,10 +30,7 @@ export const openCoverAni = anime({
   easing: Config.OPEN_COVER_ANI_EASING_TYPE,
   update: (ani) => {
     const coverEl = document.querySelector(Selectors.ENV_COVER);
-    const rate =
-      (Config.OPEN_COVER_ANI_DURATION / 2 + Config.OPEN_COVER_ANI_DELAY) /
-      (Config.OPEN_COVER_ANI_DURATION + Config.OPEN_COVER_ANI_DELAY);
-    if (ani.progress > rate * 100) {
+    if (ani.progress > 75) {
       if (!coverEl.classList.contains('opened'))
         coverEl.classList.add('opened');
     }
@@ -76,27 +73,19 @@ export const showFrontCardTextAnimations = () => {
     const textEl = document.querySelectorAll(
       Selectors.FRONT_CARD_TEXT_CHARACTER
     )[i];
-    const backgroundEl = document.querySelectorAll(
-      Selectors.FRONT_CARD_TEXT_BACKGROUND
-    )[i];
     return anime
       .timeline({
-        direction: 'alternate',
+        targets: textEl,
         autoplay: false,
+        direction: 'alternate',
+        loop: 4,
       })
       .add({
-        targets: textEl,
         color: color,
-        easing: 'easeInOutBounce',
+        easing: 'linear',
         textShadow: `0 0px 8px ${color}`,
         duration: Config.FRONT_TEXT_ANI_DURATION,
       });
-    // .add({
-    //   targets: backgroundEl,
-    //   duration: Config.FRONT_TEXT_ANI_DURATION,
-    //   opacity: 1,
-    //   easing: 'linear',
-    // });
   });
 };
 
