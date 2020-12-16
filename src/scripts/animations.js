@@ -52,8 +52,7 @@ export const openCardAnimation = anime({
   easing: Config.OPEN_CARD_ANI_EASING_TYPE,
   update: (ani) => {
     if (ani.progress === 100) {
-      document.querySelector(Selectors.ENV_BODY).style['z-index'] =
-        Config.BODY_Z_INDEX_AFTER;
+      document.querySelector(Selectors.ENV_BODY).classList.add('showed-card');
     }
   },
   direction: 'alternate',
@@ -81,9 +80,9 @@ export const showFrontCardTextAnimations = () => {
         loop: 2,
       })
       .add({
-        color: color,
+        opacity: 0.4,
         easing: 'linear',
-        textShadow: `0 0px 8px ${color}`,
+        textShadow: `0 0px 8px`,
         duration: Config.FRONT_TEXT_ANI_DURATION,
       });
   });

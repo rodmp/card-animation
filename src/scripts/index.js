@@ -32,12 +32,6 @@ let lastName = urlParams.get('lastname') ? urlParams.get('lastname') : '';
  * Init Function
  */
 const init = () => {
-  document.querySelector(Selectors.ENV_BODY).style['z-index'] =
-    Config.BODY_Z_INDEX_BEFORE;
-
-  document.querySelector(Selectors.ENV_COVER).style['z-index'] =
-    Config.COVER_Z_INDEX_BEFORE;
-
   peelSeal = new Peel('.env-card-seal');
   peelSeal.setPeelPosition(170, 170);
   peelSeal.setPeelPath(170, 170, 50, 170, 0, 0, 170, -170);
@@ -145,7 +139,6 @@ const showFrontTextAni = (animations) => {
     },
     () => Math.floor(Math.random() * 24)
   );
-  console.log(random);
   let startedAnimations = [];
   for (let i = 0; i < random.length; i++) {
     const animation = animations[random[i]];
@@ -223,28 +216,23 @@ const peelAni = () => {
 
 (async function () {
   await init();
-  // peelAni();
-  // await scaleAndOpenCoverAni();
+  await scaleAndOpenCoverAni();
 
-  // //Change z-index of Envelope Cover
-  // document.querySelector(Selectors.ENV_COVER).style['z-index'] =
-  //   Config.COVER_Z_INDEX_AFTER;
+  await openCardAni();
+  cardStatus = Card_Status.Opened;
 
-  // await openCardAni();
-  // cardStatus = Card_Status.Opened;
+  /**
+   * Add click event in Card
+   */
+  document
+    .querySelector(Selectors.ENV_CARD)
+    .addEventListener('click', handleClickCard);
 
-  // /**
-  //  * Add click event in Card
-  //  */
-  // document
-  //   .querySelector(Selectors.ENV_CARD)
-  //   .addEventListener('click', handleClickCard);
+  // await writeFrontTextAni();
+  showFrontTextAni(Ani.showFrontCardTextAnimations());
 
-  // // await writeFrontTextAni();
-  // showFrontTextAni(Ani.showFrontCardTextAnimations());
-
-  // setTimeout(async () => {
-  //   await turnCardAnimation();
-  //   cardStatus = Card_Status.Turned;
-  // }, 4000);
+  setTimeout(async () => {
+    await turnCardAnimation();
+    cardStatus = Card_Status.Turned;
+  }, 4000);
 })();
