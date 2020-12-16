@@ -51,6 +51,7 @@ const init = () => {
       peelSeal.setTimeAlongPath(this.target.t);
     },
   });
+  tweenSeal.seek(0);
 
   /**
    * Render name dynamically
@@ -212,7 +213,6 @@ const handleClickCloseBtn = (e) => {
 };
 
 const peelAni = () => {
-  tweenSeal.seek(0);
   tweenSeal.play();
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -224,27 +224,27 @@ const peelAni = () => {
 (async function () {
   await init();
   // peelAni();
-  // await scaleAndOpenCoverAni();
+  await scaleAndOpenCoverAni();
 
-  // //Change z-index of Envelope Cover
-  // document.querySelector(Selectors.ENV_COVER).style['z-index'] =
-  //   Config.COVER_Z_INDEX_AFTER;
+  //Change z-index of Envelope Cover
+  document.querySelector(Selectors.ENV_COVER).style['z-index'] =
+    Config.COVER_Z_INDEX_AFTER;
 
-  // await openCardAni();
-  // cardStatus = Card_Status.Opened;
+  await openCardAni();
+  cardStatus = Card_Status.Opened;
 
-  // /**
-  //  * Add click event in Card
-  //  */
-  // document
-  //   .querySelector(Selectors.ENV_CARD)
-  //   .addEventListener('click', handleClickCard);
+  /**
+   * Add click event in Card
+   */
+  document
+    .querySelector(Selectors.ENV_CARD)
+    .addEventListener('click', handleClickCard);
 
-  // // await writeFrontTextAni();
-  // showFrontTextAni(Ani.showFrontCardTextAnimations());
+  // await writeFrontTextAni();
+  showFrontTextAni(Ani.showFrontCardTextAnimations());
 
-  // setTimeout(async () => {
-  //   await turnCardAnimation();
-  //   cardStatus = Card_Status.Turned;
-  // }, 4000);
+  setTimeout(async () => {
+    await turnCardAnimation();
+    cardStatus = Card_Status.Turned;
+  }, 4000);
 })();

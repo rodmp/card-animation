@@ -78,12 +78,11 @@ export const showFrontCardTextAnimations = () => {
         targets: textEl,
         autoplay: false,
         direction: 'alternate',
-        loop: 2,
       })
       .add({
         color: color,
         easing: 'linear',
-        textShadow: `0 0px 8px ${color}`,
+        textShadow: `0 0px 15px ${color}`,
         duration: Config.FRONT_TEXT_ANI_DURATION,
       });
   });
