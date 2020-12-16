@@ -128,6 +128,53 @@ html {
   }
 }
 
+.env-card-seal {
+  z-index: 100000;
+  position: absolute;
+  height: 20vh;
+  width: 20vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  & .peel-top {
+    background: url(./../images/seal.png) center center no-repeat;
+    background-size: 100% 100%;
+    border: none;
+
+    & .peel-top-shadow {
+      background-image: none !important;
+    }
+  }
+
+  & .peel-back {
+    opacity: 1;
+    background-color: transparent;
+    background: url(./../images/seal.png) center center no-repeat;
+    background-size: 100% 100%;
+    // -webkit-transform: rotateY(180deg);
+    // -moz-transform: rotateY(180deg);
+    // -ms-transform: rotateY(180deg);
+    // -o-transform: rotateY(180deg);
+    // transform: rotateY(180deg);
+    border: none;
+
+    & .peel-back-shadow {
+      background-image: none !important;
+    }
+  }
+
+  & .peel-bottom {
+    opacity: 0;
+  }
+}
+
+.peel-layer {
+  box-shadow: none !important;
+}
+
 .env-card-front {
   padding: 0 (100vh - $paddingY) * 0.05;
 }
@@ -150,36 +197,43 @@ html {
       letter-spacing: -(100vh - $paddingY) * 0.015;
 
       span:nth-child(1) {
-        color: rgba(242, 123, 170, 0.8);
+        //H
+        color: rgba(255, 123, 172, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.025;
       }
 
       span:nth-child(2) {
-        color: rgba(44, 41, 113, 0.8);
+        //O
+        color: rgba(26, 24, 119, 0.8);
       }
 
       span:nth-child(3) {
-        color: rgba(237, 28, 36, 0.8);
+        //L
+        color: rgba(248, 0, 4, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.005;
       }
 
       span:nth-child(4) {
-        color: rgba(234, 215, 41, 0.8);
+        //I
+        color: rgba(234, 215, 38, 0.8);
         letter-spacing: (100vh - $paddingY) * 0.007;
       }
 
       span:nth-child(5) {
-        color: rgba(141, 198, 65, 1);
+        //D
+        color: rgba(140, 198, 63, 1);
         letter-spacing: -(100vh - $paddingY) * 0.038;
       }
 
       span:nth-child(6) {
-        color: rgba(46, 54, 144, 0.8);
+        //A
+        color: rgba(46, 49, 146, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.02;
       }
 
       span:nth-child(7) {
-        color: rgba($color: rgba(239, 64, 53, 0.8), $alpha: 0.72);
+        //Y
+        color: rgba($color: rgba(255, 58, 47, 0.8), $alpha: 0.72);
       }
     }
 
@@ -188,27 +242,32 @@ html {
       letter-spacing: -(100vh - $paddingY) * 0.015;
 
       & > span:nth-child(1) {
+        //C
         color: rgba(0, 169, 157, 0.9);
         letter-spacing: (100vh - $paddingY) * 0.002;
       }
 
       & > span:nth-child(2) {
-        color: rgba(241, 91, 39, 0.8);
+        //H
+        color: rgba(241, 90, 36, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.015;
       }
 
       & > span:nth-child(3) {
-        color: rgba(237, 28, 36, 0.8);
+        //E
+        color: rgba(248, 0, 4, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.01;
       }
 
       & > span:nth-child(4) {
-        color: rgba(242, 123, 170, 0.8);
+        //E
+        color: rgba(255, 123, 172, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.03;
       }
 
       & > span:nth-child(5) {
-        color: rgba(141, 198, 65, 0.8);
+        //R
+        color: rgba(140, 198, 63, 0.8);
       }
     }
 
@@ -217,31 +276,37 @@ html {
       letter-spacing: -(100vh - $paddingY) * 0.015;
 
       & > span:nth-child(1) {
-        color: rgba(239, 64, 53, 0.8);
+        //F
+        color: rgba(255, 58, 47, 0.8);
       }
 
       & > span:nth-child(2) {
-        color: rgba(213, 32, 39, 0.8);
+        //O
+        color: rgba(214, 4, 7, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.022;
       }
 
       & > span:nth-child(3) {
-        color: rgba(4, 105, 55, 0.8);
+        //R
+        color: rgba(0, 104, 55, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.01;
       }
 
       & > span:nth-child(5) {
-        color: rgba(234, 215, 41, 0.8);
+        //T
+        color: rgba(234, 215, 38, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.015;
       }
 
       & > span:nth-child(6) {
-        color: rgba(46, 54, 144, 0.8);
+        //H
+        color: rgba(46, 49, 146, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.027;
       }
 
       & > span:nth-child(7) {
-        color: rgba(213, 32, 39, 0.8);
+        //E
+        color: rgba(214, 4, 7, 0.8);
       }
     }
 
@@ -250,17 +315,20 @@ html {
       letter-spacing: -(100vh - $paddingY) * 0.015;
 
       & > span:nth-child(1) {
-        color: rgba(39, 35, 97, 0.8);
+        //N
+        color: rgba(27, 20, 100, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.005;
       }
 
       & > span:nth-child(2) {
-        color: rgba(239, 64, 53, 0.8);
+        //E
+        color: rgba(255, 58, 47, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.024;
       }
 
       & > span:nth-child(3) {
-        color: rgba(242, 123, 170, 0.8);
+        //W
+        color: rgba(255, 123, 172, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.01;
       }
 
@@ -269,22 +337,25 @@ html {
       }
 
       & > span:nth-child(5) {
+        //Y
         color: rgba(0, 169, 157, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.027;
       }
 
       & > span:nth-child(6) {
-        color: rgba(237, 28, 36, 0.8);
+        //E
+        color: rgba(248, 0, 4, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.017;
       }
 
       & > span:nth-child(7) {
-        color: rgba(234, 215, 41, 0.8);
+        //A
+        color: rgba(234, 215, 38, 0.8);
         letter-spacing: -(100vh - $paddingY) * 0.02;
       }
 
       & > span:nth-child(8) {
-        color: rgba(11, 118, 60, 0.8);
+        color: rgba(10, 117, 51, 0.8);
       }
     }
   }
@@ -327,24 +398,24 @@ html {
 
 .env-card-back-logo {
   background: url(./../images/back-logo.png);
-  width: 3vh;
-  height: 3vh;
+  width: 2.5vh;
+  height: 2.5vh;
   background-size: 100% 100%;
+  margin-top: 2vh;
 }
 
 .env-card-back-footer {
   background: url(./../images/back-footer.png) center center no-repeat;
   background-size: 100% auto;
   width: 100%;
-  height: 20vh;
+  height: 18vh;
 }
 
 .env-card-back-name-text {
-  font-size: 3vh;
+  font-size: 3.2vh;
   color: red;
   line-height: 1;
   padding: 0;
-  margin: 2vh 0 0vh;
   text-transform: uppercase;
   font-family: LeagueGothic, sans-serif;
 }
@@ -353,10 +424,6 @@ html {
   font-family: BayShore, sans-serif;
   font-size: 3vh;
   margin: 0;
-
-  & + p {
-    margin: 0;
-  }
 }
 
 .env-card-back-content {
