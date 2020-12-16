@@ -18,6 +18,9 @@ const Card_Status = {
 let cardStatus = Card_Status.Closed;
 let modalCard = null;
 
+let peelSeal = null;
+let tweenSeal = null;
+
 /**
  * Get names
  */
@@ -35,13 +38,18 @@ const init = () => {
   document.querySelector(Selectors.ENV_COVER).style['z-index'] =
     Config.COVER_Z_INDEX_BEFORE;
 
-  Array.from(
-    document.querySelectorAll(Selectors.FRONT_CARD_TEXT_CHARACTER)
-  ).map((el, i) => {
-    el.insertAdjacentHTML(
-      'beforeend',
-      `<div class="env-card-front-character-background" style="background-image: radial-gradient(circle at center, ${Config.FRONT_TEXT_DEST_COLORS[i]}, ${Config.FRONT_TEXT_DEST_COLORS[i]} 50%, rgba(255,255,255,0) 75%);"></div>`
-    );
+  peelSeal = new Peel('.env-card-seal');
+  peelSeal.setPeelPosition(170, 170);
+  peelSeal.setPeelPath(170, 170, 50, 170, 0, 0, 170, -170);
+  peelSeal.setFadeThreshold(0.7);
+  peelSeal.t = 0;
+  tweenSeal = new TweenLite(peelSeal, 2, {
+    t: 1,
+    paused: true,
+    ease: Power2.easeIn,
+    onUpdate: function () {
+      peelSeal.setTimeAlongPath(this.target.t);
+    },
   });
 
   /**
@@ -93,7 +101,11 @@ const scaleAndOpenCoverAni = () => {
   Ani.scaleAni.restart();
   Ani.openCoverAni.restart();
 
-  return Promise.all([Ani.scaleAni.finished, Ani.openCoverAni.finished]);
+  return Promise.all([
+    Ani.scaleAni.finished,
+    peelAni(),
+    Ani.openCoverAni.finished,
+  ]);
 };
 
 /**
@@ -127,11 +139,21 @@ const writeFrontTextAni = () => {
  * @param {*} animations
  */
 const showFrontTextAni = (animations) => {
-  const random = anime.random(0, 24);
+  const random = Array.from(
+    {
+      length: 8,
+    },
+    () => Math.floor(Math.random() * 24)
+  );
   console.log(random);
-  const showTextAni = animations[anime.random(0, 24)];
-  showTextAni.restart();
-  showTextAni.finished.then(() => {
+  let startedAnimations = [];
+  for (let i = 0; i < random.length; i++) {
+    const animation = animations[random[i]];
+    animation.restart();
+    if (animation) startedAnimations[i] = animation.finished;
+  }
+
+  Promise.all(startedAnimations).then(() => {
     showFrontTextAni(animations);
   });
 };
@@ -189,29 +211,40 @@ const handleClickCloseBtn = (e) => {
   modalCard = null;
 };
 
+const peelAni = () => {
+  tweenSeal.seek(0);
+  tweenSeal.play();
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+};
+
 (async function () {
   await init();
-  await scaleAndOpenCoverAni();
+  // peelAni();
+  // await scaleAndOpenCoverAni();
 
-  //Change z-index of Envelope Cover
-  document.querySelector(Selectors.ENV_COVER).style['z-index'] =
-    Config.COVER_Z_INDEX_AFTER;
+  // //Change z-index of Envelope Cover
+  // document.querySelector(Selectors.ENV_COVER).style['z-index'] =
+  //   Config.COVER_Z_INDEX_AFTER;
 
-  await openCardAni();
-  cardStatus = Card_Status.Opened;
+  // await openCardAni();
+  // cardStatus = Card_Status.Opened;
 
-  /**
-   * Add click event in Card
-   */
-  document
-    .querySelector(Selectors.ENV_CARD)
-    .addEventListener('click', handleClickCard);
+  // /**
+  //  * Add click event in Card
+  //  */
+  // document
+  //   .querySelector(Selectors.ENV_CARD)
+  //   .addEventListener('click', handleClickCard);
 
-  // await writeFrontTextAni();
-  showFrontTextAni(Ani.showFrontCardTextAnimations());
+  // // await writeFrontTextAni();
+  // showFrontTextAni(Ani.showFrontCardTextAnimations());
 
-  setTimeout(async () => {
-    await turnCardAnimation();
-    cardStatus = Card_Status.Turned;
-  }, 3000);
+  // setTimeout(async () => {
+  //   await turnCardAnimation();
+  //   cardStatus = Card_Status.Turned;
+  // }, 4000);
 })();
