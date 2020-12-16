@@ -56,7 +56,7 @@ html {
 .env-card {
   display: flex;
   align-items: center;
-  background: url(./../images/card-background.jpg) no-repeat;
+  background: url(./../images/card-background.svg) no-repeat;
   background-size: 100% 100%;
   height: (100vh - $paddingY) * $cardScaleY;
   width: $cardScaleX * 100%;
@@ -100,10 +100,14 @@ html {
   left: -1px;
   position: absolute;
   z-index: 1005;
+
+  &.showed-card {
+    z-index: 995;
+  }
 }
 
 .env-cover {
-  background: url(./../images/cover-out.png) center right no-repeat;
+  background: url(./../images/cover-out.svg) center right no-repeat;
   background-size: auto 100%;
   height: 100vh - $paddingY;
   width: 100%;
@@ -123,8 +127,9 @@ html {
   transform-style: preserve-3d;
 
   &.opened {
-    background: url(./../images/cover-in.png) center right no-repeat;
+    background: url(./../images/cover-in.svg) center right no-repeat;
     background-size: auto 100%;
+    z-index: 995;
   }
 }
 
@@ -141,7 +146,7 @@ html {
   margin: auto;
 
   & .peel-top {
-    background: url(./../images/seal.png) center center no-repeat;
+    background: url(./../images/seal.svg) center center no-repeat;
     background-size: 100% 100%;
     border: none;
 
@@ -153,7 +158,7 @@ html {
   & .peel-back {
     opacity: 1;
     background-color: transparent;
-    background: url(./../images/seal.png) center center no-repeat;
+    background: url(./../images/seal.svg) center center no-repeat;
     background-size: 100% 100%;
     // -webkit-transform: rotateY(180deg);
     // -moz-transform: rotateY(180deg);
@@ -199,42 +204,43 @@ html {
 
       span:nth-child(1) {
         //H
-        color: rgba(255, 123, 172, 0.8);
+        color: #e282a0;
         letter-spacing: -(100vh - $paddingY) * 0.025;
       }
 
       span:nth-child(2) {
         //O
-        color: rgba(26, 24, 119, 0.8);
+        color: #424081;
       }
 
       span:nth-child(3) {
         //L
-        color: rgba(248, 0, 4, 0.8);
+        color: #e72e31;
         letter-spacing: -(100vh - $paddingY) * 0.005;
       }
 
       span:nth-child(4) {
         //I
-        color: rgba(234, 215, 38, 0.8);
-        letter-spacing: (100vh - $paddingY) * 0.007;
+        color: #decc49;
+        letter-spacing: -(100vh - $paddingY) * 0.008;
       }
 
       span:nth-child(5) {
         //D
-        color: rgba(140, 198, 63, 1);
+        color: #83b639;
         letter-spacing: -(100vh - $paddingY) * 0.038;
       }
 
       span:nth-child(6) {
         //A
-        color: rgba(46, 49, 146, 0.8);
+        color: #525397;
         letter-spacing: -(100vh - $paddingY) * 0.02;
       }
 
       span:nth-child(7) {
         //Y
-        color: rgba($color: rgba(255, 58, 47, 0.8), $alpha: 0.72);
+        color: #ed594f;
+        letter-spacing: -(100vh - $paddingY) * 0.018;
       }
     }
 
@@ -244,31 +250,31 @@ html {
 
       & > span:nth-child(1) {
         //C
-        color: rgba(0, 169, 157, 0.9);
-        letter-spacing: (100vh - $paddingY) * 0.002;
+        color: #189e92;
+        letter-spacing: -(100vh - $paddingY) * 0.03;
       }
 
       & > span:nth-child(2) {
         //H
-        color: rgba(241, 90, 36, 0.8);
-        letter-spacing: -(100vh - $paddingY) * 0.015;
+        color: #e37047;
+        letter-spacing: -(100vh - $paddingY) * 0.019;
       }
 
       & > span:nth-child(3) {
         //E
-        color: rgba(248, 0, 4, 0.8);
-        letter-spacing: -(100vh - $paddingY) * 0.01;
+        color: #e82f31;
+        letter-spacing: -(100vh - $paddingY) * 0.016;
       }
 
       & > span:nth-child(4) {
         //E
-        color: rgba(255, 123, 172, 0.8);
+        color: #ee89a9;
         letter-spacing: -(100vh - $paddingY) * 0.03;
       }
 
       & > span:nth-child(5) {
         //R
-        color: rgba(140, 198, 63, 0.8);
+        color: #98c05b;
       }
     }
 
@@ -278,36 +284,37 @@ html {
 
       & > span:nth-child(1) {
         //F
-        color: rgba(255, 58, 47, 0.8);
+        color: #e3544b;
+        letter-spacing: -(100vh - $paddingY) * 0.019;
       }
 
       & > span:nth-child(2) {
         //O
-        color: rgba(214, 4, 7, 0.8);
-        letter-spacing: -(100vh - $paddingY) * 0.022;
+        color: #ca3131;
+        letter-spacing: -(100vh - $paddingY) * 0.025;
       }
 
       & > span:nth-child(3) {
         //R
-        color: rgba(0, 104, 55, 0.8);
+        color: #2f7a55;
         letter-spacing: -(100vh - $paddingY) * 0.01;
       }
 
       & > span:nth-child(5) {
         //T
-        color: rgba(234, 215, 38, 0.8);
-        letter-spacing: -(100vh - $paddingY) * 0.015;
+        color: #decc49;
+        letter-spacing: -(100vh - $paddingY) * 0.027;
       }
 
       & > span:nth-child(6) {
         //H
-        color: rgba(46, 49, 146, 0.8);
-        letter-spacing: -(100vh - $paddingY) * 0.027;
+        color: #525397;
+        letter-spacing: -(100vh - $paddingY) * 0.013;
       }
 
       & > span:nth-child(7) {
         //E
-        color: rgba(214, 4, 7, 0.8);
+        color: #cf3232;
       }
     }
 
@@ -317,19 +324,19 @@ html {
 
       & > span:nth-child(1) {
         //N
-        color: rgba(27, 20, 100, 0.8);
-        letter-spacing: -(100vh - $paddingY) * 0.005;
+        color: #3e386a;
+        letter-spacing: -(100vh - $paddingY) * 0.008;
       }
 
       & > span:nth-child(2) {
         //E
-        color: rgba(255, 58, 47, 0.8);
+        color: #e6564d;
         letter-spacing: -(100vh - $paddingY) * 0.024;
       }
 
       & > span:nth-child(3) {
         //W
-        color: rgba(255, 123, 172, 0.8);
+        color: #ec88a8;
         letter-spacing: -(100vh - $paddingY) * 0.01;
       }
 
@@ -339,24 +346,24 @@ html {
 
       & > span:nth-child(5) {
         //Y
-        color: rgba(0, 169, 157, 0.8);
+        color: #30ab9f;
         letter-spacing: -(100vh - $paddingY) * 0.027;
       }
 
       & > span:nth-child(6) {
         //E
-        color: rgba(248, 0, 4, 0.8);
+        color: #e82f31;
         letter-spacing: -(100vh - $paddingY) * 0.017;
       }
 
       & > span:nth-child(7) {
         //A
-        color: rgba(234, 215, 38, 0.8);
+        color: #ddcc49;
         letter-spacing: -(100vh - $paddingY) * 0.02;
       }
 
       & > span:nth-child(8) {
-        color: rgba(10, 117, 51, 0.8);
+        color: #368452;
       }
     }
   }
@@ -398,7 +405,7 @@ html {
 }
 
 .env-card-back-logo {
-  background: url(./../images/back-logo.png);
+  background: url(./../images/back-logo.svg);
   width: 2.5vh;
   height: 2.5vh;
   background-size: 100% 100%;
@@ -406,7 +413,7 @@ html {
 }
 
 .env-card-back-footer {
-  background: url(./../images/back-footer.png) center center no-repeat;
+  background: url(./../images/back-footer.svg) center center no-repeat;
   background-size: 100% auto;
   width: 100%;
   height: 18vh;
