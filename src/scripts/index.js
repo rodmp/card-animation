@@ -45,6 +45,7 @@ const init = () => {
       peelSeal.setTimeAlongPath(this.target.t);
     },
   });
+  tweenSeal.seek(0);
 
   /**
    * Render name dynamically
@@ -205,7 +206,6 @@ const handleClickCloseBtn = (e) => {
 };
 
 const peelAni = () => {
-  tweenSeal.seek(0);
   tweenSeal.play();
   return new Promise((resolve, reject) => {
     setTimeout(() => {

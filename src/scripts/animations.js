@@ -77,7 +77,6 @@ export const showFrontCardTextAnimations = () => {
         targets: textEl,
         autoplay: false,
         direction: 'alternate',
-        loop: 2,
       })
       .add({
         opacity: 0.4,

@@ -39,7 +39,7 @@ export const OPEN_CARD_ANI_EASING_TYPE = 'linear';
 /**
  * Front Text
  */
-export const FRONT_TEXT_ANI_DURATION = 300;
+export const FRONT_TEXT_ANI_DURATION = 400;
 export const FRONT_TEXT_DEST_COLORS = [
   `rgba(255, 123, 172, 1)`, //H
   `rgba(26, 24, 119, 0.15)`, //O
