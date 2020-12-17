@@ -45,12 +45,13 @@ html {
 }
 
 .env-background {
+  position: relative;
   background: url(./../images/envelope-background.jpg) no-repeat;
   background-size: 100% 100%;
   content: '';
   display: block;
   height: 100vh - $paddingY;
-  z-index: 0;
+  z-index: 100;
 }
 
 .env-card {
@@ -99,10 +100,10 @@ html {
   top: 0;
   left: -1px;
   position: absolute;
-  z-index: 1005;
+  z-index: 2000;
 
   &.showed-card {
-    z-index: 995;
+    z-index: 500;
   }
 }
 
@@ -114,7 +115,7 @@ html {
   top: 0;
   right: 0;
   position: absolute;
-  z-index: 1010;
+  z-index: 3000;
   -webkit-transform-origin: right;
   -moz-transform-origin: right;
   -ms-transform-origin: right;
@@ -129,7 +130,7 @@ html {
   &.opened {
     background: url(./../images/cover-in.svg) center right no-repeat;
     background-size: auto 100%;
-    z-index: 995;
+    z-index: 500;
   }
 }
 
