@@ -156,15 +156,9 @@ html {
   }
 
   & .peel-back {
-    opacity: 1;
     background-color: transparent;
     background: url(./../images/seal.svg) center center no-repeat;
     background-size: 100% 100%;
-    // -webkit-transform: rotateY(180deg);
-    // -moz-transform: rotateY(180deg);
-    // -ms-transform: rotateY(180deg);
-    // -o-transform: rotateY(180deg);
-    // transform: rotateY(180deg);
     border: none;
 
     & .peel-back-shadow {
