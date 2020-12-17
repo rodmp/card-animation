@@ -119,7 +119,7 @@ const init = () => {
  * @param {*} animations
  */
 const showFrontTextAni = (animations) => {
-  if (cardStatus === Card_Status.Turning) {
+  if (cardStatus === Card_Status.Turned) {
     animations.map((ani) => ani.pause());
     return;
   }
