@@ -5,7 +5,7 @@ export const LEAN_DEG = -8.8;
  */
 export const INIT_SCALE = 0.2;
 export const INIT_SCALE_ANI_DURATION = 3000;
-export const INIT_SCALE_ANI_EASING_TYPE = 'easeOutBack';
+export const INIT_SCALE_ANI_EASING_TYPE = 'linear';
 
 /**
  * z-index values

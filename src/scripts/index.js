@@ -1,6 +1,8 @@
 import '../styles/index.scss';
 import * as Selectors from './selectors';
 import * as Ani from './animations';
+import anime from 'animejs';
+import * as Config from './constants';
 
 if (process.env.NODE_ENV === 'development') {
   require('../index.html');
@@ -131,7 +133,7 @@ const showFrontTextAni = (animations) => {
   let startedAnimations = [];
   random.map((ran) => {
     const animation = animations[ran];
-    animation.restart();
+    animation.play();
     if (animation) startedAnimations.push(animation.finished);
   });
 
@@ -200,11 +202,11 @@ const Timeout = (ms) => {
 
 const startAnimation = async () => {
   await init();
-
+  await Timeout(1000);
   // peelAni();
 
-  Ani.scaleAni.restart();
-  Ani.openCoverAni.restart();
+  Ani.scaleAni.play();
+  Ani.openCoverAni.play();
   await Promise.all([
     Ani.scaleAni.finished,
     peelAni(),
@@ -213,7 +215,7 @@ const startAnimation = async () => {
   Ani.scaleAni.pause();
   Ani.openCoverAni.pause();
 
-  Ani.openCardAnimation.restart();
+  Ani.openCardAnimation.play();
   await Promise.all([Ani.openCardAnimation.finished]);
   Ani.openCardAnimation.pause();
   cardStatus = Card_Status.Opened;
@@ -228,7 +230,7 @@ const startAnimation = async () => {
   await Timeout(5000);
 
   cardStatus = Card_Status.Turning;
-  Ani.turnCardAnimation.restart();
+  Ani.turnCardAnimation.play();
   await Promise.all[Ani.turnCardAnimation.finished];
   cardStatus = Card_Status.Turned;
 };

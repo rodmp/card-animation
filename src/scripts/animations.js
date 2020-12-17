@@ -5,19 +5,23 @@ import * as Selectors from './selectors';
 /**
  * Scale Envelope Animation
  */
-export const scaleAni = anime({
-  targets: Selectors.ENV_WRAPPER,
-  scale: [
-    { value: Config.INIT_SCALE },
-    {
-      value: 1,
-      duration: Config.INIT_SCALE_ANI_DURATION,
-      easing: Config.INIT_SCALE_ANI_EASING_TYPE,
-    },
-  ],
-  rotate: Config.LEAN_DEG,
-  autoplay: false,
-});
+export const scaleAni = anime
+  .timeline({
+    targets: Selectors.ENV_WRAPPER,
+    autoplay: false,
+  })
+  .add({
+    scale: Config.INIT_SCALE,
+    rotate: Config.LEAN_DEG,
+    easing: 'easeOutExpo',
+    duration: 0,
+  })
+  .add({
+    scale: 1,
+    rotate: Config.LEAN_DEG,
+    easing: Config.INIT_SCALE_ANI_EASING_TYPE,
+    duration: Config.INIT_SCALE_ANI_DURATION,
+  });
 
 /**
  * Open Envelope Cover Animation
