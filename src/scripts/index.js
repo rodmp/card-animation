@@ -1,8 +1,6 @@
 import '../styles/index.scss';
-import * as Config from './constants';
 import * as Selectors from './selectors';
 import * as Ani from './animations';
-import anime from 'animejs';
 
 if (process.env.NODE_ENV === 'development') {
   require('../index.html');
@@ -28,6 +26,17 @@ let tweenSeal = null;
 const urlParams = new URLSearchParams(window.location.search);
 let firstName = urlParams.get('firstname') ? urlParams.get('firstname') : '';
 let lastName = urlParams.get('lastname') ? urlParams.get('lastname') : '';
+
+if (
+  document.readyState === 'complete' ||
+  (document.readyState !== 'loading' && !document.documentElement.doScroll)
+) {
+  startAnimation();
+} else {
+  document.addEventListener('DOMContentLoaded', () => {
+    startAnimation();
+  });
+}
 
 /**
  * Init Function
@@ -189,7 +198,7 @@ const Timeout = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-(async function () {
+const startAnimation = async () => {
   await init();
 
   // peelAni();
@@ -222,4 +231,4 @@ const Timeout = (ms) => {
   Ani.turnCardAnimation.restart();
   await Promise.all[Ani.turnCardAnimation.finished];
   cardStatus = Card_Status.Turned;
-})();
+};
