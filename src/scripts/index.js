@@ -13,6 +13,7 @@ const Card_Status = {
   Opened: 1,
   Turned: 2,
   Clicked: 3,
+  Turning: 4,
 };
 
 let cardStatus = Card_Status.Closed;
@@ -32,11 +33,23 @@ let lastName = urlParams.get('lastname') ? urlParams.get('lastname') : '';
  * Init Function
  */
 const init = () => {
-  peelSeal = new Peel('.env-card-seal');
-  peelSeal.setPeelPosition(170, 170);
-  peelSeal.setPeelPath(170, 170, 50, 170, 0, 0, 170, -170);
+  peelSeal = new Peel('#env-card-seal');
+  const sealHeight = document.querySelector('.env-card-seal').offsetHeight;
+
+  peelSeal.setPeelPosition(sealHeight, sealHeight);
+  peelSeal.setPeelPath(
+    sealHeight,
+    sealHeight,
+    sealHeight / 2,
+    sealHeight,
+    0,
+    0,
+    sealHeight,
+    -sealHeight
+  );
   peelSeal.setFadeThreshold(0.7);
   peelSeal.t = 0;
+
   tweenSeal = new TweenLite(peelSeal, 2, {
     t: 1,
     paused: true,
@@ -70,7 +83,7 @@ const init = () => {
   /**
    * Snow Animation
    */
-  var limit_flake = 50;
+  var limit_flake = 100;
   setInterval(function () {
     let dimension = randomInt(3, 9) + 'px';
     var flake =
@@ -90,50 +103,16 @@ const init = () => {
 };
 
 /**
- * Scale Animation and Open Cover Animation
- */
-const scaleAndOpenCoverAni = () => {
-  Ani.scaleAni.restart();
-  Ani.openCoverAni.restart();
-
-  return Promise.all([
-    Ani.scaleAni.finished,
-    peelAni(),
-    Ani.openCoverAni.finished,
-  ]);
-};
-
-/**
- * Open Card Animation
- *
- */
-const openCardAni = () => {
-  Ani.openCardAnimation.restart();
-  return Promise.all([Ani.openCardAnimation.finished]);
-};
-
-/**
- * Write FrontText Animation
- */
-const writeFrontTextAni = () => {
-  Ani.openFrontCardTextAnimation
-    .add({
-      // rotate
-      targets: Selectors.FRONT_CARD_TEXT_CHARACTER,
-      rotateY: [-90, 0],
-      duration: 1300,
-      delay: (el, i) => 45 * i,
-    })
-    .restart();
-  return Promise.all([Ani.openFrontCardTextAnimation.finished]);
-};
-
-/**
  * Show Front Text Animations
  *
  * @param {*} animations
  */
 const showFrontTextAni = (animations) => {
+  if (cardStatus === Card_Status.Turning) {
+    animations.map((ani) => ani.pause());
+    return;
+  }
+
   const random = Array.from(
     {
       length: 8,
@@ -141,24 +120,15 @@ const showFrontTextAni = (animations) => {
     () => Math.floor(Math.random() * 24)
   );
   let startedAnimations = [];
-  for (let i = 0; i < random.length; i++) {
-    const animation = animations[random[i]];
+  random.map((ran) => {
+    const animation = animations[ran];
     animation.restart();
-    if (animation) startedAnimations[i] = animation.finished;
-  }
+    if (animation) startedAnimations.push(animation.finished);
+  });
 
   Promise.all(startedAnimations).then(() => {
     showFrontTextAni(animations);
   });
-};
-
-/**
- * Turn Card Animation
- *
- */
-const turnCardAnimation = () => {
-  Ani.turnCardAnimation.restart();
-  return Promise.all[Ani.turnCardAnimation.finished];
 };
 
 const handleClickCard = async (event) => {
@@ -207,6 +177,7 @@ const handleClickCloseBtn = (e) => {
 
 const peelAni = () => {
   tweenSeal.play();
+
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve();
@@ -214,25 +185,41 @@ const peelAni = () => {
   });
 };
 
+const Timeout = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
 (async function () {
   await init();
-  await scaleAndOpenCoverAni();
 
-  await openCardAni();
+  // peelAni();
+
+  Ani.scaleAni.restart();
+  Ani.openCoverAni.restart();
+  await Promise.all([
+    Ani.scaleAni.finished,
+    peelAni(),
+    Ani.openCoverAni.finished,
+  ]);
+  Ani.scaleAni.pause();
+  Ani.openCoverAni.pause();
+
+  Ani.openCardAnimation.restart();
+  await Promise.all([Ani.openCardAnimation.finished]);
+  Ani.openCardAnimation.pause();
   cardStatus = Card_Status.Opened;
 
-  /**
-   * Add click event in Card
-   */
   document
     .querySelector(Selectors.ENV_CARD)
     .addEventListener('click', handleClickCard);
 
-  // await writeFrontTextAni();
-  showFrontTextAni(Ani.showFrontCardTextAnimations());
+  const textAnimations = Ani.showFrontCardTextAnimations();
+  showFrontTextAni(textAnimations);
 
-  setTimeout(async () => {
-    await turnCardAnimation();
-    cardStatus = Card_Status.Turned;
-  }, 4000);
+  await Timeout(5000);
+
+  cardStatus = Card_Status.Turning;
+  Ani.turnCardAnimation.restart();
+  await Promise.all[Ani.turnCardAnimation.finished];
+  cardStatus = Card_Status.Turned;
 })();
