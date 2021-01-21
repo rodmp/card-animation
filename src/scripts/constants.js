@@ -27,14 +27,14 @@ export const INIT_CARD_SCALE_Y = 0.92;
  * Open Cover Animation
  */
 export const OPEN_COVER_ANI_DURATION = 2000;
-export const OPEN_COVER_ANI_EASING_TYPE = 'linear';
+export const OPEN_COVER_ANI_EASING_TYPE = 'easeInOutQuad';
 export const OPEN_COVER_ANI_DELAY = 2000;
 
 /**
  * Open Card Animation
  */
 export const OPEN_CARD_ANI_DURATION = 500;
-export const OPEN_CARD_ANI_EASING_TYPE = 'linear';
+export const OPEN_CARD_ANI_EASING_TYPE = 'easeInOutQuad';
 
 /**
  * Front Text

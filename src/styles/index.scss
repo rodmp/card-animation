@@ -147,7 +147,7 @@ html {
   margin: auto;
 
   & .peel-top {
-    background: url(./../images/seal.svg) center center no-repeat;
+    background: url(./../images/seal-no-word.svg) center center no-repeat;
     background-size: 100% 100%;
     border: none;
 
@@ -158,7 +158,7 @@ html {
 
   & .peel-back {
     background-color: transparent;
-    background: url(./../images/seal.svg) center center no-repeat;
+    background: url(./../images/seal-no-word.svg) center center no-repeat;
     background-size: 100% 100%;
     border: none;
 
@@ -401,8 +401,8 @@ html {
 
 .env-card-back-logo {
   background: url(./../images/back-logo.svg);
-  width: 2.5vh;
-  height: 2.5vh;
+  width: 5vh;
+  height: 5vh;
   background-size: 100% 100%;
   margin-top: 2vh;
 }
@@ -415,7 +415,7 @@ html {
 }
 
 .env-card-back-name-text {
-  font-size: 3.2vh;
+  font-size: 5vh;
   color: red;
   line-height: 1;
   padding: 0;
@@ -425,12 +425,12 @@ html {
 
 .env-card-back-content-sign {
   font-family: BayShore, sans-serif;
-  font-size: 3vh;
+  font-size: 4vh;
   margin: 0;
 }
 
 .env-card-back-content {
-  font-size: 1.45vh;
+  font-size: 2.5vh;
 }
 
 .env-card-back-content > p:first-child {
@@ -479,12 +479,31 @@ html {
   top: 0;
   z-index: 1;
   border-radius: 100%;
-  background-color: #fff;
-  box-shadow: 0 0 10px #fff;
+  background: url(./../images/snow.svg) center center no-repeat;
+  background-size: 100% 100%;
+  box-shadow: 0 0 2px #fffafa;
 }
 
 .animate {
-  animation: falling 5.5s infinite ease-in;
+  animation: falling 8s infinite ease-in;
+  perspective: 0;
+
+  &.drop--near {
+    animation: falling 8s infinite ease-in;
+  }
+
+  &.drop--mid {
+    animation: falling 12s infinite ease-in;
+    // box-shadow: 0 0 2px #fffafa;
+    opacity: 0.6;
+    perspective: 100cm;
+  }
+  &.drop--far {
+    animation: falling 16s infinite ease-in;
+    // box-shadow: 0 0 10px #fffafa;
+    opacity: 0.3;
+    perspective: 200cm;
+  }
 }
 
 // Lamp Animation

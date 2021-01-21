@@ -94,20 +94,21 @@ const init = () => {
   /**
    * Snow Animation
    */
-  var limit_flake = 100;
+  const limit_flake = 150;
   setInterval(function () {
-    let dimension = randomInt(3, 9) + 'px';
-    var flake =
-      "<div class='drop animate' style='left:" +
-      randomInt(10, window.innerWidth - 20) +
-      'px;width:' +
-      dimension +
-      ';height:' +
-      dimension +
-      "'></div>";
+    const dimension = randomInt(5, 16) + 'px';
+    const layer = randomInt(0, 2);
+    const layers = ['near', 'mid', 'far'];
+    const flake = `<div class='drop animate drop--${
+      layers[layer]
+    }' style='left:${randomInt(
+      10,
+      window.innerWidth - 20
+    )}px;width: ${dimension}; height: ${dimension}'></div>`;
+
     document.querySelector('body').insertAdjacentHTML('beforeend', flake);
 
-    var list_flake = document.querySelectorAll('.drop');
+    let list_flake = document.querySelectorAll('.drop');
     if (list_flake.length > limit_flake)
       list_flake[list_flake.length - 1].remove();
   }, 200);
